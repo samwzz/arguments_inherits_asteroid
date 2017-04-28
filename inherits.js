@@ -1,10 +1,9 @@
 Function.prototype.inherits = function(parentClass) {
   // this.inherits(parentClass)
-  function Surrogate() {
-    Surrogate.prototype = parentClass.prototype;
-    this.prototype = new Surrogate();
-    this.prototype.constructor = this;
-  }
+  function Surrogate() {}
+  Surrogate.prototype = parentClass.prototype;
+  this.prototype = new Surrogate();
+  this.prototype.constructor = this;
 };
 
 Function.prototype.inherits2 = function(parentClass) {
@@ -24,7 +23,7 @@ function Bro(name) {
   Person.call(this, name);
 }
 
-Bro.inherits2(Person);
+Bro.inherits(Person);
 
 const Joe = new Bro("Joe");
 
